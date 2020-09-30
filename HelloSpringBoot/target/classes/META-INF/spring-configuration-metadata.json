@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "com.linjing.pojo.Person",
+      "sourceType": "com.linjing.pojo.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.birth",
+      "type": "java.util.Date",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.dog",
+      "type": "com.linjing.pojo.Dog",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.email",
+      "type": "java.lang.String",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.list",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.map",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "com.linjing.pojo.Person"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "com.linjing.pojo.Person"
+    }
+  ],
+  "hints": []
+}
