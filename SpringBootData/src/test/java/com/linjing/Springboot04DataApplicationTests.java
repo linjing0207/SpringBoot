@@ -21,7 +21,7 @@ class Springboot04DataApplicationTests {
 
         //获得数据库连接
         Connection connection = dataSource.getConnection();
-        System.out.println(connection);
+        System.out.println(connection);  //jdbc
 
         //xxxx Template 模板: springboot 已经配置(封装)好的模板bean, 拿来即用. CRUD
         //jdbc
