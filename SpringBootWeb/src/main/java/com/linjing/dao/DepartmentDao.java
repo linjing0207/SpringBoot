@@ -23,7 +23,7 @@ public class DepartmentDao {
     }
 
     //获得所有部门信息
-    public Collection<Department> getDeparments() {
+    public Collection<Department> getDepartments() {
         return departments.values();
     }
 

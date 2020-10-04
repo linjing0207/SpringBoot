@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="fixed" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+
+    <meta name="keywords" content="HTML5 Admin Template"/>
+    <meta name="description" content="Porto Admin - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light"
+          rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link th:rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.css}"/>
+    <link th:rel="stylesheet" th:href="@{/vendor/font-awesome/css/font-awesome.css}"/>
+    <link th:rel="stylesheet" th:href="@{/vendor/magnific-popup/magnific-popup.css}"/>
+    <link th:rel="stylesheet" th:href="@{/vendor/bootstrap-datepicker/css/datepicker3.css}"/>
+
+    <!-- Theme CSS -->
+    <link th:rel="stylesheet" th:href="@{/stylesheets/theme.css}"/>
+
+    <!-- Skin CSS -->
+    <link th:rel="stylesheet" th:href="@{/stylesheets/skins/default.css}"/>
+
+    <!-- Theme Custom CSS -->
+    <link th:rel="stylesheet" th:href="@{/stylesheets/theme-custom.css}">
+
+    <!-- Head Libs -->
+    <script th:src="@{/vendor/modernizr/modernizr.js}"></script>
+
+</head>
+<body>
+<section class="body">
+
+    <!-- start: header -->
+    <div th:replace="~{commons/commons::header}"></div>
+    <!-- end: header -->
+
+    <div class="inner-wrapper">
+        <!-- start: sidebar -->
+        <div th:replace="~{commons/commons::sidebar-left(active='list.html')}"></div>
+        <!-- end: sidebar -->
+
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Dashboard</h2>
+
+                <div class="right-wrapper pull-right">
+                    <ol class="breadcrumbs">
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li><span>Dashboard</span></li>
+                    </ol>
+
+                    <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+                </div>
+            </header>
+
+            <div class="row">
+            </div>
+
+            <!-- start: page -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- restful: get -->
+                    <form th:action="@{/emp}" method="post">
+                        <div class="form-group">
+                            <label> Last Name</label>
+                            <input type="text" name="lastName" class="form-control" placeholder="linjing">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="123456@gamil.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="0">
+                                <label class="form-check-label">女</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="1">
+                                <label class="form-check-label">男</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <!-- 由于controller里接收的是一个Employee, 所以我们需要提交的是其中一个属性! -->
+                            <select class="form-control" name="department.id">
+                                <option th:each="dept:${departments}" th:text="${dept.getDepartmentName()}"
+                                        th:value="${dept.getId()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Birth</label>
+                            <input type="text" name="birth" class="form-control" placeholder="study">
+                        </div>
+                        <button type="submit" class="btn btn-default">添加</button>
+                    </form>
+                </div>
+            </div>
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+</section>
+
+<!-- Vendor -->
+<script th:src="@{/vendor/jquery/jquery.js}"></script>
+<script th:src="@{/vendor/jquery-browser-mobile/jquery.browser.mobile.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/vendor/nanoscroller/nanoscroller.js}"></script>
+<script th:src="@{/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+<script th:src="@{/vendor/magnific-popup/magnific-popup.js}"></script>
+<script th:src="@{/vendor/jquery-placeholder/jquery.placeholder.js}"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script th:src="@{/javascripts/theme.js}"></script>
+
+<!-- Theme Custom -->
+<script th:src="@{/javascripts/theme.custom.js}"></script>
+
+<!-- Theme Initialization Files -->
+<script th:src="@{/javascripts/theme.init.js}"></script>
+
+
+<!-- Examples -->
+<script th:src="@{/javascripts/dashboard/examples.dashboard.js}"></script>
+</body>
+</html>

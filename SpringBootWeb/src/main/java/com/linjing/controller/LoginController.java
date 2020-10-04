@@ -14,7 +14,6 @@ public class LoginController {
 
     @RequestMapping(value = "/user/login",
         method = RequestMethod.POST)
-
     public String login(@RequestParam("username") String userName, @RequestParam("pwd") String pwd, Model model,
         HttpSession session) {
         //具体业务
@@ -25,5 +24,13 @@ public class LoginController {
             model.addAttribute("msg", "用户名或者密码错误!");
             return "index";
         }
+    }
+
+    @RequestMapping(value = "/user/logout")
+    public String logout(HttpSession session) {
+        //具体业务
+        session.invalidate();
+        //return "index";
+        return "redirect:/index.html";
     }
 }
