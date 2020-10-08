@@ -1,30 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
 </head>
 <body>
 <h1>首页</h1>
-<a th:href="@{/toLogin}">登录</a>
-
-<br>
 <div>
-    <div>
+    <!--如果未登录-->
+    <div sec:authorize="!isAuthenticated()">
+        <a th:href="@{/toLogin}">登录</a>
+    </div>
+    <br>
+    <!--如果已经登录: 用户名 + 注销-->
+    <div sec:authorize="isAuthenticated()">
+        用户名: <span sec:authentication="name"></span>
+        <a th:href="@{/logout}">注销</a>
+    </div>
+
+</div>
+<br>
+
+<!--菜单根据用户的角色, 动态实现-->
+<div>
+    <div sec:authorize="hasRole('vip1')">
         <label>Level1</label>
         <a th:href="@{/level1/1}">Level1-1</a>
         <a th:href="@{/level1/2}">Level1-2</a>
         <a th:href="@{/level1/3}">Level1-3</a>
     </div>
     <br>
-    <div>
+    <div sec:authorize="hasRole('vip2')">
         <label>Level2</label>
         <a th:href="@{/level2/1}">Level2-1</a>
         <a th:href="@{/level2/2}">Level2-2</a>
         <a th:href="@{/level2/3}">Level2-3</a>
     </div>
     <br>
-    <div>
+    <div sec:authorize="hasRole('vip3')">
         <label>Level3</label>
         <a th:href="@{/level3/1}">Level3-1</a>
         <a th:href="@{/level3/2}">Level3-2</a>

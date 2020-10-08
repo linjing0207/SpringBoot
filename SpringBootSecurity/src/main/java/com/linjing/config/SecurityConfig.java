@@ -19,9 +19,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { //1
         //请求授权的规则
         http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/level1/**").hasRole("vip1")
             .antMatchers("/level2/**").hasRole("vip2").antMatchers("/level3/**").hasRole("vip3");
-        //没有权限默认回到登录页面, 需要开启登录的页面;
-        // "/login"
-        http.formLogin();
+
+        //没有权限, 默认回到登录页面, 需要开启登录的页面;
+        //定制登录页面: .loginPage("/toLogin"); 点击登录是"/login"请求
+        http.formLogin().loginPage("/toLogin").loginProcessingUrl("/login").usernameParameter("name")
+            .passwordParameter("pwd").successForwardUrl("/");
+
+        //防止网站攻击: get -> post
+        http.csrf().disable(); //关闭csrf功能, 登录失败的原因
+        //开启注销 "/logout", 注销成功跳回首页
+        http.logout().logoutSuccessUrl("/");
+
+        //开启记住我功能, cookie, 默认保存两周; 自定义接受前端的参数
+        http.rememberMe().rememberMeParameter("remember");
     }
 
     //认证: springboot 2.1.x 可以直接使用

@@ -17,6 +17,11 @@ public class RouterController {
         return "views/login";
     }
 
+    //@RequestMapping("/login")
+    //public String login() {
+    //    return "index";
+    //}
+
     @RequestMapping("/level1/{id}")
     public String level1(@PathVariable("id") int id) {
         return "views/level1/" + id;

@@ -6,17 +6,17 @@
 </head>
 <body>
 
-<form th:action="@{/index}">
+<form th:action="@{/login}" method="post">
     <div class="form-group">
         <label>Name</label>
-        <input th:type="text" id="name">
+        <input type="text" name="name">
     </div>
     <div>
         <label>Password</label>
-        <input th:type="password" id="pwd">
+        <input type="password" name="pwd">
     </div>
-
-    <button th:type="submit">Sign in</button>
+    <input type="checkbox" name="remember">记住我
+    <button type="submit">Sign in</button>
 </form>
 
 </body>
